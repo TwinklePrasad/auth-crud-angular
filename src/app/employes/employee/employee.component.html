@@ -1,0 +1,126 @@
+<div class="main-panel">
+  <div class="main-content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header card-header-primary">
+              <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal">Add New employee</button>
+
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table">
+                  <thead class=" text-primary">
+                     <th>Id</th>
+                     <th>Name</th>
+                     <th>Email</th>
+                     <th>Phone Number</th>
+                     <th>Address</th>
+                      
+                    </thead>
+                  <tbody>
+                    <tr *ngFor=" let employee of employees">
+                      <td>{{employee._id}}</td>
+                      <td>{{employee.name}}</td>
+                      <td>{{employee.email}}</td>
+                      <td>{{employee.phone}}</td>
+                      <td>{{employee.address}}</td>
+                       
+                      
+                    <td>
+                      <a  (click)="onEdit(employee)" data-toggle="modal" data-target="#myModal"><i class="material-icons">&#xE150;</i></a>
+    
+                      <!-- <button type="button" (click)="deleteUser(user.id)" class="btn btn-raised btn-danger ml-2">Delete</button> -->
+                      <a (click)=" deleteEmployee(employee._id)" class="ml-4"><i class="material-icons">delete</i></a>
+                  </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="card card-plain">
+
+            <div class="card-body">
+              <div class="table-responsive">
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog modal-lg">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <div class="card">
+              <div class="card-header card-header-primary">
+                <h4 class="card-title">Add Profile</h4>
+
+              </div>
+
+              <div class="modal-body">
+
+                <!-- left column -->
+
+                <!-- general form elements -->
+                <div class="card-body">
+                  <form  #employeeForm="ngForm"  (ngSubmit)="onSubmit(employeeForm)" >
+                    <input type="hidden" name="_id"  [(ngModel)]="employee._id" #id="ngModel"> 
+                  
+                 <div class="row">
+                   <div class="col-md-6">
+                     <div class="form-group">
+                       <label class="bmd-label-floating">Name</label>
+                       <input type="text" #name="ngModel" class="form-control" name="name" [(ngModel)]="employee.name" id="id_name">
+                     </div>
+                   </div>
+                   <div class="col-md-6">
+                     <div class="form-group">
+                       <label class="bmd-label-floating">Email</label>
+                       <input type="text" #name="ngModel" class="form-control" name="email" [(ngModel)]="employee.email" id="id_email">
+                     </div>
+                   </div>
+                 </div>
+                 <div class="row">
+                   <div class="col-md-6">
+                     <div class="form-group">
+                       <label class="bmd-label-floating">Phone</label>
+                       <input type="number" #name="ngModel" class="form-control" name="phone" [(ngModel)]="employee.phone" id="id_phone">
+                     </div>
+                   </div>
+                   <div class="col-md-6">
+                     <div class="form-group">
+                       <label class="bmd-label-floating">Address</label>
+                       <input type="text" #name="ngModel" class="form-control" name="address" [(ngModel)]="employee.address" id="id_address">
+                     </div>
+                   </div>
+                 </div>
+                 
+
+                  
+
+                 <button type="submit" class="btn btn-primary pull-right" data-toggle="modal" data-target="#myModal">Submit</button>
+                 <button type="button" (click)="resetForm()" class="btn btn-danger pull-left" data-dismiss="modal">Close</button>
+                 <div class="clearfix"></div>
+               </form>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
