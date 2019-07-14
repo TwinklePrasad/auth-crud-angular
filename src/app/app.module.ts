@@ -12,13 +12,17 @@ import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth.guard';
 import { AuthService } from './auth.service';
 import { TokenInterceptorService } from './token-interceptor.service';
+import { PrfileComponent } from './prfile/prfile.component';
+import { ProductComponent } from './product/product.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     routing,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    PrfileComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,

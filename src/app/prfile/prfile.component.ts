@@ -2,13 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import * as jwt_decode from "jwt-decode";
 import { Router } from '@angular/router'
 import { HttpClient } from '@angular/common/http'
+
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  selector: 'app-prfile',
+  templateUrl: './prfile.component.html',
+  styleUrls: ['./prfile.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class PrfileComponent implements OnInit {
   return :any;
+  useremail:any;
+
   userdata:any;
   constructor( private router: Router,
     private http:HttpClient) { }
@@ -21,14 +24,12 @@ export class DashboardComponent implements OnInit {
      let id = this.return.id
      this.http.get("http://localhost:3000/getiuserid/" + id).subscribe((data:any) =>{
        this.userdata = data;
+       this.useremail = this.userdata[0].your_email
        console.log(this.userdata);
-       if(this.userdata[0].user_type == "admin"){
-console.log("admin")
-       }else if(this.userdata[0].user_type == "employee"){
-        console.log("employee")  
-       }
-       else{
-console.log("user")
+       if(this.userdata[0].kye == "admin"){
+//console.log("admin")your_email
+       }else{
+//console.log("user")
        }
      })
   }

@@ -30,11 +30,13 @@ export class RegisterComponent implements OnInit {
     )      
   }
 */
+
+
 registerUser(){
   this.http.post("http://localhost:3000/login", this.registerUserData).subscribe((data:any) =>{
     this.logindata = data;
     this._router.navigate(['/login'])
   })
- // console.log(this.registerUserData);
+ console.log(this.registerUserData);
 }
 }
